@@ -1,0 +1,9 @@
+Mexico,Merida,1000,Fedex,Barco,23/01/2020
+USA,Progreso,100000,Fedex,Avion,10/01/2020
+Campeche,Merida,100,Fedex,Tren,27/01/2020
+Mexico,Merida,10,DHL,Barco,21/01/2020
+Mexico,Merida,200,DHL,Avion,22/01/2020
+Mexico,Merida,300,DHL,Tren,25/01/2020
+Mexico,Merida,400,Estafeta,Barco,26/01/2020
+Mexico,Merida,500,Estafeta,Avion,27/01/2020
+Mexico,Merida,60000,Estafeta,Tren,27/01/2020

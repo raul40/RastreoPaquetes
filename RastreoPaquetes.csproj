@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F7896AF0-9A9E-4665-B41C-ED940B56B92D}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>RastreoPaquetes</RootNamespace>
+    <AssemblyName>RastreoPaquetes</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Factory\EmpresaFactory.cs" />
+    <Compile Include="Factory\Interfaces\IEmpresaFactory.cs" />
+    <Compile Include="Factory\Interfaces\ITransporteFactory.cs" />
+    <Compile Include="Factory\TransporteFactory.cs" />
+    <Compile Include="Generador\GeneradorMensajeFuturo.cs" />
+    <Compile Include="Generador\GeneradorMensajePasado.cs" />
+    <Compile Include="Generador\Interfaces\IGeneradorMensaje.cs" />
+    <Compile Include="Interfaz\Interfaces\IColorTexto.cs" />
+    <Compile Include="Interfaz\TextoAmarillo.cs" />
+    <Compile Include="Interfaz\TextoRojo.cs" />
+    <Compile Include="Interfaz\TextoVerde.cs" />
+    <Compile Include="LectorArchivo\Interfaces\iLectorArchivo.cs" />
+    <Compile Include="LectorArchivo\LectorArchivoTexto.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repo\DTO\DatosPedido.cs" />
+    <Compile Include="Repo\Empresa\DHL.cs" />
+    <Compile Include="Repo\Empresa\Estafeta.cs" />
+    <Compile Include="Repo\Empresa\Interfaces\EmpresaAbstract.cs" />
+    <Compile Include="Repo\Empresa\Fedex.cs" />
+    <Compile Include="Repo\Empresa\Interfaces\IEmpresa.cs" />
+    <Compile Include="Repo\Transporte\Avion.cs" />
+    <Compile Include="Repo\Transporte\Barco.cs" />
+    <Compile Include="Repo\Transporte\Interfaces\ITransporte.cs" />
+    <Compile Include="Repo\Transporte\Tren.cs" />
+    <Compile Include="Servicios\EmpresaTransporteService.cs" />
+    <Compile Include="Servicios\MensajesService.cs" />
+    <Compile Include="Strategy\Interfaces\IRecuperarMensajeTiempoStrategy.cs" />
+    <Compile Include="Strategy\RecuperarMensajeDias.cs" />
+    <Compile Include="Strategy\RecuperarMensajeHoras.cs" />
+    <Compile Include="Strategy\RecuperarMensajeMeses.cs" />
+    <Compile Include="Strategy\RecuperarMensajeMinutos.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
