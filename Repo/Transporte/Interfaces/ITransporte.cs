@@ -12,6 +12,8 @@ namespace RastreoPaquetes.Repo.Interfaces
 
         decimal dVelocidadEntrega { get; set; }
 
+        string cNombreTransporte { get; set; }
+
         TimeSpan ObtenerTiempoTraslado(decimal _dDistancia);
     }
 }

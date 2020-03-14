@@ -15,6 +15,7 @@ namespace RastreoPaquetes.LectorArchivo
 
         public List<DatosPedido> LeerArchivo(string _cRuta)
         {
+            _cRuta += "DatosPedidos.txt";
             if (File.Exists(_cRuta))
             {
                 DatosArchivo = File.ReadAllLines(_cRuta);

@@ -16,10 +16,12 @@ namespace RastreoPaquetes.Servicios
     public class EmpresaTransporteService
     {
         private readonly List<DatosPedido> lstDatosPedido;
+        private readonly DatosConfiguracion entDatosConfig;
 
-        public EmpresaTransporteService(List<DatosPedido> _lstDatosPedido)
+        public EmpresaTransporteService(List<DatosPedido> _lstDatosPedido, DatosConfiguracion _entDatosConfig)
         {
             lstDatosPedido = _lstDatosPedido;
+            entDatosConfig = _entDatosConfig;
         }
 
         public void ObtenerResultado()
@@ -33,8 +35,8 @@ namespace RastreoPaquetes.Servicios
                 try
                 {
                     item.dtFechaActual = DateTime.Now;
-                    ITransporte entTransporte = FabricaTransporte.ObtenerTransporte(item.cMedioTransporte);
-                    FabricaEmpresa = new EmpresaFactory(entTransporte, item);
+                    ITransporte entTransporte = FabricaTransporte.ObtenerTransporte(item.cMedioTransporte, entDatosConfig);
+                    FabricaEmpresa = new EmpresaFactory(entTransporte, item, entDatosConfig);
                     EmpresaAbstract Empresa = FabricaEmpresa.ObtenerEmpresa(item.cPaqueteria);
                     item.dtFechaEntrega = Empresa.ObtenerFechaEntrega(item.dtFechaPedido);
                     item.tsTiempoTraslado = Empresa.tsTiempoTraslado;

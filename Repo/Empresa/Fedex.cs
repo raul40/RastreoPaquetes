@@ -1,4 +1,5 @@
-﻿using RastreoPaquetes.Repo.Interfaces;
+﻿using RastreoPaquetes.Repo.DTO;
+using RastreoPaquetes.Repo.Interfaces;
 using RastreoPaquetes.Repo.Transporte;
 using System;
 using System.Collections.Generic;
@@ -10,23 +11,26 @@ namespace RastreoPaquetes.Repo.Empresa
 {
     public class Fedex : EmpresaAbstract
     {
+        private readonly Paqueterias entPaqueteria;
+
         public ITransporte entTransporte { get; set; }
         public decimal dMargenUtilidad { get; set; }
 
-        public Fedex(ITransporte entTransporte, decimal _dDistancia, DateTime _dtFechaActual)
+        public Fedex(ITransporte entTransporte, decimal _dDistancia, DateTime _dtFechaActual, Paqueterias _entPaqueteria)
         {
             this.entTransporte = entTransporte;
+            this.entPaqueteria = _entPaqueteria;
             ValidaTransporte();
             base.dDistancia = _dDistancia;
             base.dtFechaActual = _dtFechaActual;
-            this.dMargenUtilidad = 50;
+            this.dMargenUtilidad = _entPaqueteria.MargenUtilidad;
         }
 
         private void ValidaTransporte()
         {
-            if (entTransporte.GetType() != new Barco().GetType())
+            if (!entPaqueteria.Medios.Where(w => w.Medio == entTransporte.cNombreTransporte).Any())
             {
-                throw new Exception("");
+                throw new Exception("El transporte no existe para esta paqueteria");
             }
         }
     }

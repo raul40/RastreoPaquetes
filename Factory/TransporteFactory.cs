@@ -12,22 +12,26 @@ namespace RastreoPaquetes.Factory
 {
     public class TransporteFactory : ITransporteFactory
     {
-        public ITransporte ObtenerTransporte(string _cTransporte)
+        public ITransporte ObtenerTransporte(string _cTransporte, DatosConfiguracion _entDatosConfig)
         {
             ITransporte Transporte;
-            switch (_cTransporte.ToUpper())
+            MediosTransporte datosMedios;
+            switch (_cTransporte)
             {
-                case "BARCO":
-                    Transporte = new Barco();
+                case "Marítimo":
+                    datosMedios = _entDatosConfig.MediosTransporte.Where(w => w.Medio == "Marítimo").FirstOrDefault();
+                    Transporte = new Barco(datosMedios.CostoPorKilometro, datosMedios.Velocidad);
                     break;
-                case "TREN":
-                    Transporte = new Tren();
+                case "Terrestre":
+                    datosMedios = _entDatosConfig.MediosTransporte.Where(w => w.Medio == "Terrestre").FirstOrDefault();
+                    Transporte = new Tren(datosMedios.CostoPorKilometro, datosMedios.Velocidad);
                     break;
-                case "AVION":
-                    Transporte = new Avion();
+                case "Aéreo":
+                    datosMedios = _entDatosConfig.MediosTransporte.Where(w => w.Medio == "Aéreo").FirstOrDefault();
+                    Transporte = new Avion(datosMedios.CostoPorKilometro, datosMedios.Velocidad);
                     break;
                 default:
-                    throw new Exception("");
+                    throw new Exception("No existe el transporte solicitado");
             }
 
             return Transporte;

@@ -14,18 +14,41 @@ namespace RastreoPaquetes
     {
         static void Main(string[] args)
         {
-            Init();
+            Init(args);
         }
 
-        private static void Init()
+        private static void Init(string[] _args)
         {
-            string cRuta = @"..\..\DatosPedidos.txt";
-            iLectorArchivo lectorArchivoTexto = new LectorArchivoTexto();
-            List<DatosPedido> lstDatosPedido = lectorArchivoTexto.LeerArchivo(cRuta);
+            try
+            {
+                string cRuta = @"..\..\";
+                string cRutaConfiguracion = AppDomain.CurrentDomain.BaseDirectory + @"..\..\Config.json";
+                List<DatosPedido> lstDatosPedido = new List<DatosPedido>();
+                if (_args[1].ToUpper() == "JSON")
+                {
+                    iLectorArchivo lectorArchivoTexto = new LectorArchivoJson();
+                    lstDatosPedido = lectorArchivoTexto.LeerArchivo(cRuta);
+                }
+                else
+                {
+                    iLectorArchivo lectorArchivoTexto = new LectorArchivoTexto();
+                    lstDatosPedido = lectorArchivoTexto.LeerArchivo(cRuta);
+                }
 
-            EmpresaTransporteService srvEmpresaTransporte = new EmpresaTransporteService(lstDatosPedido);
-            srvEmpresaTransporte.ObtenerResultado();
-            Console.ReadLine();
+                iLectorConfiguracion lectorConfig = new LectorConfiguracionJson();
+                var datosCofig = lectorConfig.LeerConfiguracion(cRutaConfiguracion);
+                AlmacenadorDatosService srvAlmacenadorDatos = new AlmacenadorDatosService();
+                srvAlmacenadorDatos.CrearDirectorioDatos();
+                EmpresaTransporteService srvEmpresaTransporte = new EmpresaTransporteService(lstDatosPedido, datosCofig);
+                srvEmpresaTransporte.ObtenerResultado();
+                Console.ReadLine();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.ReadLine();
+            }
+            
 
         }
     }

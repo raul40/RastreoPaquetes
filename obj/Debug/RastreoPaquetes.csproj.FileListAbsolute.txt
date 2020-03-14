@@ -4,3 +4,13 @@ C:\Users\IGNITER\Source\Repos\RastreoPaquetes\RastreoPaquetes\bin\Debug\RastreoP
 C:\Users\IGNITER\Source\Repos\RastreoPaquetes\RastreoPaquetes\obj\Debug\RastreoPaquetes.csprojAssemblyReference.cache
 C:\Users\IGNITER\Source\Repos\RastreoPaquetes\RastreoPaquetes\obj\Debug\RastreoPaquetes.exe
 C:\Users\IGNITER\Source\Repos\RastreoPaquetes\RastreoPaquetes\obj\Debug\RastreoPaquetes.pdb
+C:\Users\Raul.tuyin\source\repos\RastreoPaquetes\bin\Debug\RastreoPaquetes.exe.config
+C:\Users\Raul.tuyin\source\repos\RastreoPaquetes\bin\Debug\RastreoPaquetes.exe
+C:\Users\Raul.tuyin\source\repos\RastreoPaquetes\bin\Debug\RastreoPaquetes.pdb
+C:\Users\Raul.tuyin\source\repos\RastreoPaquetes\obj\Debug\RastreoPaquetes.csprojAssemblyReference.cache
+C:\Users\Raul.tuyin\source\repos\RastreoPaquetes\obj\Debug\RastreoPaquetes.csproj.CoreCompileInputs.cache
+C:\Users\Raul.tuyin\source\repos\RastreoPaquetes\obj\Debug\RastreoPaquetes.exe
+C:\Users\Raul.tuyin\source\repos\RastreoPaquetes\obj\Debug\RastreoPaquetes.pdb
+C:\Users\Raul.tuyin\source\repos\RastreoPaquetes\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Raul.tuyin\source\repos\RastreoPaquetes\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Raul.tuyin\source\repos\RastreoPaquetes\obj\Debug\RastreoPaquetes.csproj.CopyComplete

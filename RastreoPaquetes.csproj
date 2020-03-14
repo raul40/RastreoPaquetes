@@ -8,10 +8,11 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>RastreoPaquetes</RootNamespace>
     <AssemblyName>RastreoPaquetes</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adapter\Interfaces\iPedidosAdapter.cs" />
+    <Compile Include="Adapter\PedidosJsonAdapter.cs" />
     <Compile Include="Factory\EmpresaFactory.cs" />
     <Compile Include="Factory\Interfaces\IEmpresaFactory.cs" />
     <Compile Include="Factory\Interfaces\ITransporteFactory.cs" />
@@ -55,10 +61,15 @@
     <Compile Include="Interfaz\TextoRojo.cs" />
     <Compile Include="Interfaz\TextoVerde.cs" />
     <Compile Include="LectorArchivo\Interfaces\iLectorArchivo.cs" />
+    <Compile Include="LectorArchivo\Interfaces\iLectorConfiguracion.cs" />
+    <Compile Include="LectorArchivo\LectorArchivoJson.cs" />
     <Compile Include="LectorArchivo\LectorArchivoTexto.cs" />
+    <Compile Include="LectorArchivo\LectorConfiguracionJson.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repo\DTO\DatosConfiguracion.cs" />
     <Compile Include="Repo\DTO\DatosPedido.cs" />
+    <Compile Include="Repo\DTO\DatosPedidoJson.cs" />
     <Compile Include="Repo\Empresa\DHL.cs" />
     <Compile Include="Repo\Empresa\Estafeta.cs" />
     <Compile Include="Repo\Empresa\Interfaces\EmpresaAbstract.cs" />
@@ -68,9 +79,12 @@
     <Compile Include="Repo\Transporte\Barco.cs" />
     <Compile Include="Repo\Transporte\Interfaces\ITransporte.cs" />
     <Compile Include="Repo\Transporte\Tren.cs" />
+    <Compile Include="Servicios\AlmacenadorDatosService.cs" />
     <Compile Include="Servicios\EmpresaTransporteService.cs" />
     <Compile Include="Servicios\MensajesService.cs" />
     <Compile Include="Strategy\Interfaces\IRecuperarMensajeTiempoStrategy.cs" />
+    <Compile Include="Strategy\RecuperarMensajeAnios.cs" />
+    <Compile Include="Strategy\RecuperarMensajeBimestre.cs" />
     <Compile Include="Strategy\RecuperarMensajeDias.cs" />
     <Compile Include="Strategy\RecuperarMensajeHoras.cs" />
     <Compile Include="Strategy\RecuperarMensajeMeses.cs" />
@@ -78,6 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

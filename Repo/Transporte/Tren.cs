@@ -9,6 +9,7 @@ namespace RastreoPaquetes.Repo.Transporte
 {
     public class Tren : ITransporte
     {
+        public string cNombreTransporte { get; set; }
         public decimal dCostoKm { get; set; }
         public decimal dVelocidadEntrega { get; set; }
 
@@ -16,6 +17,14 @@ namespace RastreoPaquetes.Repo.Transporte
         {
             this.dCostoKm = 5;
             this.dVelocidadEntrega = 80;
+            this.cNombreTransporte = "Terrestre";
+        }
+
+        public Tren(decimal _dCostoKm, decimal _dVelocidad)
+        {
+            this.dCostoKm = _dCostoKm;
+            this.dVelocidadEntrega = _dVelocidad;
+            this.cNombreTransporte = "Terrestre";
         }
 
         public TimeSpan ObtenerTiempoTraslado(decimal _dDistancia)

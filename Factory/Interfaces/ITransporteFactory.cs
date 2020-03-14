@@ -10,6 +10,6 @@ namespace RastreoPaquetes.Factory.Interfaces
 {
     public interface ITransporteFactory
     {
-        ITransporte ObtenerTransporte(string _cTransporte);
+        ITransporte ObtenerTransporte(string _cTransporte, DatosConfiguracion _entDatosConfig);
     }
 }

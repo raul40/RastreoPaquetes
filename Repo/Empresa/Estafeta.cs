@@ -1,4 +1,5 @@
-﻿using RastreoPaquetes.Repo.Interfaces;
+﻿using RastreoPaquetes.Repo.DTO;
+using RastreoPaquetes.Repo.Interfaces;
 using RastreoPaquetes.Repo.Transporte;
 using System;
 using System.Collections.Generic;
@@ -10,25 +11,27 @@ namespace RastreoPaquetes.Repo.Empresa
 {
     public class Estafeta : EmpresaAbstract
     {
+        private readonly Paqueterias entPaqueteria;
         private readonly decimal dDistancia;
 
         public ITransporte entTransporte { get; set; }
         public decimal dMargenUtilidad { get; set; }
 
-        public Estafeta(ITransporte entTransporte, decimal _dDistancia, DateTime _dtFechaActual)
+        public Estafeta(ITransporte entTransporte, decimal _dDistancia, DateTime _dtFechaActual, Paqueterias _entPaqueteria)
         {
             this.entTransporte = entTransporte;
+            this.entPaqueteria = _entPaqueteria;
             ValidaTransporte();
             base.dDistancia = _dDistancia;
             base.dtFechaActual = _dtFechaActual;
-            this.dMargenUtilidad = 40;
+            this.dMargenUtilidad = _entPaqueteria.MargenUtilidad;
         }
 
         private void ValidaTransporte()
         {
-            if (entTransporte.GetType() != new Tren().GetType())
+            if (!entPaqueteria.Medios.Where(w => w.Medio == entTransporte.cNombreTransporte).Any())
             {
-                throw new Exception("");
+                throw new Exception("El transporte no existe para esta paqueteria");
             }
         }
     }
